@@ -1,11 +1,12 @@
 const express = require('express');
-// const bodyParser = require('body-parser');
-const sequelize = require('./config/database');
-const taskRoutes = require('./routes/taskRoutes');
+const sequelize = require('./database');
+const taskRoutes = require('./routes/task_routes');
+const userRoutes = require('./routes/user_routes');
 
 const app = express();
 
 app.use('/tasks', taskRoutes);
+app.use('/users', userRoutes);
 
 sequelize.sync({ force: false })
     .then(() => {
